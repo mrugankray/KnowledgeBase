@@ -1,0 +1,50 @@
+doctype html
+html
+    head
+        title Knowledgebase
+        link(href='https://fonts.googleapis.com/css?family=Marcellus+SC',rel='stylesheet')
+        link(href='/bower_components/bootstrap/dist/css/bootstrap.min.css',rel='stylesheet')
+        link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.2.0/css/all.css', integrity='sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ', crossorigin='anonymous')
+        link(href='/css/style.css',rel='stylesheet')
+    body
+        nav.navbar.navbar-expand-md.navbar-dark.bg-dark
+            a.navbar-brand(href='/') KnowledgeBase
+            button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarsExampleDefault', aria-controls='navbarsExampleDefault', aria-expanded='false', aria-label='Toggle navigation')
+                span.navbar-toggler-icon
+            #navbarsExampleDefault.collapse.navbar-collapse
+                ul.navbar-nav.mr-auto
+                    li.nav-item
+                        a.nav-link(href='/')
+                            | Home 
+                            span.sr-only (current)
+                    if user
+                        li.nav-item
+                            a.nav-link(href='/articles/add') Add Article
+                ul.navbar-nav.ml-auto
+                    if user
+                        li
+                            a.nav-link(href='/users/logout')
+                                | Logout 
+                                i.fas.fa-sign-out-alt
+                    else 
+                        li
+                            a.nav-link(href='/users/register')
+                                | Sign Up 
+                                i.fas.fa-user-plus
+                        li
+                            a.nav-link(href='/users/login')
+                                | Login 
+                                i.fas.fa-sign-in-alt
+        .container
+            != messages('message', locals)
+            if errors
+                each error, i in errors
+                    div(class="alert alert-danger") #{error.msg}
+            block content
+            br
+            hr
+            footer
+                p copyright &copy; 2018 
+        script(src='/bower_components/jquery/dist/jquery.min.js')
+        script(src='/bower_components/bootstrap/dist/js/bootstrap.min.js')
+        script(src='/js/main.js')
