@@ -29,6 +29,7 @@ router.post('/register',(req,res)=>{
     error = req.validationErrors();
     if(error)
     {
+        req.flash('danger','Please check if your email is valid and also check if both passwords match');
         res.render('register',{
             error:error
         });
@@ -52,7 +53,7 @@ router.post('/register',(req,res)=>{
                             {
                                 console.log(err);
                             } else {
-                                req.flash('success','you are now registred');
+                                req.flash('success','you are now registered');
                                 res.redirect('/users/login');
                             }
                     });
@@ -70,6 +71,7 @@ router.get('/login',(req,res)=>{
 
 // Login Process
 router.post('/login', function(req, res, next){
+    req.flash('success','You have sucessfully loggedin');
     passport.authenticate('local', {
       successRedirect:'/',
       failureRedirect:'/users/login',

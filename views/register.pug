@@ -5,17 +5,17 @@ block content
     form(method = 'POST',action="/users/register")
         #form-group
             label Name:
-            input.form-control(type = 'text',name = 'name')
+            input.form-control(type = 'text',name = 'name', required = 'required')
         #form-group
             label Email:
-            input.form-control(type = 'text',name = 'email')
+            input.form-control(type = 'email',name = 'email', required = 'required')
         #form-group
             label username:
-            input.form-control(type = 'text',name = 'username')
+            input.form-control(type = 'text',name = 'username', required = 'required')
         #form-group
             label Password:
-            input.form-control(type = 'password',name = 'password')
+            input.form-control(type = 'password',name = 'password', required = 'required')
         #form-group
             label Confirm Password:
-            input.form-control(type = 'password',name = 'password2')
+            input.form-control(type = 'password',name = 'password2', required = 'required')
         input.btn.btn-primray(type='submit',value="Submit")
